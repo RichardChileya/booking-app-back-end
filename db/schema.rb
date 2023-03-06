@@ -46,10 +46,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_100234) do
     t.decimal "daily_price"
     t.text "description"
     t.boolean "available", default: true
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
 
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "vehicles"
+  add_foreign_key "vehicles", "users"
 end
