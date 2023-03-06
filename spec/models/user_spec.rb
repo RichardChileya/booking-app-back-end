@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before :each do 
-    @user = User.create(name:'Richard', email:'rico@gmail.com', password:'1234567', role:1)
+  before :each do
+    @user = User.create(name: 'Richard', email: 'rico@gmail.com', password: '1234567', role: 1)
   end
 
   context 'Test validations' do
@@ -18,15 +18,14 @@ RSpec.describe User, type: :model do
   end
 
   context 'Test associations' do
-    it "has many vehicles" do
+    it 'has many vehicles' do
       expect(@user).to respond_to(:vehicles)
       expect(@user.vehicles).to be_empty
     end
 
-    it "has many bookings" do
+    it 'has many bookings' do
       expect(@user).to respond_to(:bookings)
       expect(@user.bookings).to be_empty
     end
   end
-
 end
