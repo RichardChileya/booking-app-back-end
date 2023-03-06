@@ -16,7 +16,10 @@ RSpec.describe Vehicle, type: :model do
 		it 'image should be present' do
 			expect(@vehicles.name).to eq('https://www.shutterstock.com/image-photo/kota-kinabalu-malaysia-jan-1st-260nw-559327324.jpg')	
 		end	
-	
+
+		it 'model should be present' do
+			expect(@vehicles.name).to eq('2021')	
+		end	
 	end
   
 end
