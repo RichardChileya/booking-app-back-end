@@ -11,7 +11,12 @@ RSpec.describe Vehicle, type: :model do
 	context 'Test for name availability' do
 		it 'name should be present' do
 			expect(@vehicles.name).to eq('Hilux')	
-		end		
+		end	
+
+		it 'image should be present' do
+			expect(@vehicles.name).to eq('https://www.shutterstock.com/image-photo/kota-kinabalu-malaysia-jan-1st-260nw-559327324.jpg')	
+		end	
+	
 	end
   
 end
