@@ -2,7 +2,6 @@ class Api::BookingsController < ApplicationController
   def index
     @bookings = Booking.all.where(user_id: params[:user_id]).order(created_at: :desc)
     render json: @bookings
-    
   end
 
   def show
