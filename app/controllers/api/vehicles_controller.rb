@@ -1,11 +1,12 @@
 class Api::VehiclesController < ApplicationController
   def index
-    user = User.find(params[:id])
-    user.vehicles.order(created_at: :desc)
+    @vehicles = Vehicle.order(created_at: :desc)
+    render json: @vehicles
   end
 
   def show
-    Vehicles.find(params[:id])
+    @vehicle = Vehicle.where(id: params[:id])
+    render json: @vehicle
   end
 
   def create
@@ -23,9 +24,9 @@ class Api::VehiclesController < ApplicationController
     vehicle = Vehicle.find(params[:id])
     if vehicle.update(vehicles_params)
       flash[:notice] = 'vehicle updated successfully'
-      render json: booking
+      render json: vehicle
     else
-      render json: booking.errors, status: :vehicle_not_updated
+      render json: vehicle.errors, status: :vehicle_not_updated
     end
   end
 
@@ -33,9 +34,9 @@ class Api::VehiclesController < ApplicationController
     vehicle = Vehicle.find(params[:id])
     if vehicle.destroy
       flash[:notice] = 'vehicle deleted successfully'
-      render json: booking
+      render json: vehicle
     else
-      render json: booking.errors, status: :vehicle_not_deleted
+      render json: vehicle.errors, status: :vehicle_not_deleted
     end
   end
 
