@@ -55,3 +55,6 @@ end
 gem 'devise'
 
 gem 'devise-jwt'
+
+# authorization
+gem 'cancancan'
