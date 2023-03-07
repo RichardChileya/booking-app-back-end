@@ -1,11 +1,13 @@
 class Api::BookingsController < ApplicationController
   def index
-    user = User.find(params[:id])
-    user.bookings.order(created_at: :desc)
+    @bookings = Booking.all.where(user_id: params[:user_id]).order(created_at: :desc)
+    render json: @bookings
+    
   end
 
   def show
-    Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    render json: @booking
   end
 
   def create

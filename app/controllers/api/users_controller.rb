@@ -1,9 +1,11 @@
 class Api::UsersController < ApplicationController
   def index
-    User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc)
+    render json: @users
   end
 
   def show
-    User.find(params[:id])
+    @user = User.find(params[:id])
+    render json: @user
   end
 end
