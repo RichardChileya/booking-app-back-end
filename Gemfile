@@ -58,3 +58,5 @@ gem 'devise-jwt'
 
 # authorization
 gem 'cancancan'
+
+gem 'fast_jsonapi'

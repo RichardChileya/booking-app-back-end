@@ -10,10 +10,17 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success
-    render json: { message: 'Signed up sucessfully.' }
+    render json: {
+      status: '00',
+      message: 'Signed up sucessfully.',
+      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+    }
   end
 
   def register_failed
-    render json: { message: 'Something went wrong.' }
+    render json: {
+      status: '04',
+      message: 'Something went wrong.'
+    }
   end
 end
