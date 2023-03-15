@@ -10,7 +10,7 @@ class Api::VehiclesController < ApplicationController
   end
 
   def create
-    vehicle = current_user.vehices.new(vehicles_params)
+    vehicle = current_api_user.vehicles.new(vehicles_params)
 
     if vehicle.save
       flash[:notice] = 'vehicle created successfully'
