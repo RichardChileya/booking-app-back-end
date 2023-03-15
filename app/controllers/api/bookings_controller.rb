@@ -4,13 +4,20 @@ class Api::BookingsController < ApplicationController
     render json: @bookings
   end
 
+  def booking_success
+    render json: {
+      status: '00',
+      message: 'Vehicle Booked Successfully'
+    }
+  end
+
   def show
     @booking = Booking.find(params[:id])
     render json: @booking
   end
 
   def create
-    booking = current_user.bookings.new(booking_params)
+    booking = current_api_user.bookings.new(booking_params)
 
     if booking.save
       flash[:notice] = 'booking created successfully'
