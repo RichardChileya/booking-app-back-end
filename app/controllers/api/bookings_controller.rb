@@ -1,7 +1,13 @@
 class Api::BookingsController < ApplicationController
+  before_action :authenticate_api_user!
+
   def index
-    @bookings = Booking.all.where(user_id: params[:user_id]).order(created_at: :desc)
-    render json: @bookings
+    # @bookings = Booking.all.where(user_id: params[:user_id]).order(created_at: :desc)
+    @bookings = current_api_user.bookings.order(created_at: :desc)
+    render json: {
+      status: '00',
+      bookings: @bookings
+    }, status: :ok
   end
 
   def booking_success
@@ -12,36 +18,49 @@ class Api::BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
-    render json: @booking
+    @booking = current_api_user.bookings.find(params[:id])
+    render json: {
+      status: '00',
+      message: 'Successful',
+      data: @booking
+    }
   end
 
   def create
     booking = current_api_user.bookings.new(booking_params)
 
     if booking.save
-      flash[:notice] = 'booking created successfully'
-      render json: booking
+      render json: {
+        status: '00',
+        message: 'Booking created successfully',
+        data: booking
+      }, status: :ok
     else
       render json: booking.errors, status: :booking_not_created
     end
   end
 
   def update
-    booking = Booking.find(params[:id])
+    booking = current_api_user.bookings.find(params[:id])
     if booking.update(booking_params)
-      flash[:notice] = 'booking updated successfully'
-      render json: booking
+      render json: {
+        status: '00',
+        message: 'Booking updated successfully',
+        data: booking
+      }, status: :ok
     else
       render json: booking.errors, status: :booking_not_updated
     end
   end
 
   def destroy
-    booking = Booking.find(params[:id])
+    booking = current_api_user.bookings.find(params[:id])
     if booking.destroy
-      flash[:notice] = 'booking deleted successfully'
-      render json: booking
+      render json: {
+        status: '00',
+        message: 'Booking deleted successfully',
+        data: booking
+      }, status: :ok
     else
       render json: booking.errors, status: :booking_not_deleted
     end

@@ -13,9 +13,8 @@ class Api::Users::SessionsController < Devise::SessionsController
   def login_success
     render json: {
       status: '00',
-      message: 'Logged in successfully'
-      # data: UserSerializer.new(resource).serializable_hash[:data]
-      # [:attributes]
+      message: 'Login sucessful.',
+      data: UserSerializer.new(current_api_user).serializable_hash[:data][:attributes]
     }
   end
 
@@ -27,16 +26,9 @@ class Api::Users::SessionsController < Devise::SessionsController
   end
   
   def respond_to_on_destroy
-    log_out_success && return if current_api_user
-
-    log_out_failure
-  end
-
-  def log_out_success
-    render json: { message: 'You are logged out.' }, status: :ok
-  end
-
-  def log_out_failure
-    render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
+    render json: {
+      status: '00',
+      message: 'You are logged out.'
+    }, status: :ok
   end
 end
