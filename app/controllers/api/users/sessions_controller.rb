@@ -24,7 +24,7 @@ class Api::Users::SessionsController < Devise::SessionsController
       message: 'Login failure, try again!'
     }
   end
-  
+
   def respond_to_on_destroy
     render json: {
       status: '00',
