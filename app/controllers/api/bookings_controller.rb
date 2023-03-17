@@ -6,7 +6,7 @@ class Api::BookingsController < ApplicationController
     @bookings = current_api_user.bookings.order(created_at: :desc)
     render json: {
       status: '00',
-      bookings: @bookings
+      bookings: BookingSerializer.new(@bookings, {include: [:vehicle]})
     }, status: :ok
   end
 
