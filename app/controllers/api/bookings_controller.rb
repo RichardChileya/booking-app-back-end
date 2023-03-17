@@ -13,7 +13,7 @@ class Api::BookingsController < ApplicationController
   def booking_success
     render json: {
       status: '00',
-      message: 'Vehicle Booked Successfully'
+      message: 'Vehicle Booked Successfully!'
     }
   end
 
