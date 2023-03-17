@@ -6,7 +6,6 @@ class Api::Users::SessionsController < Devise::SessionsController
   def respond_with(_resource, _opts = {})
     login_success && return if resource.persisted?
 
-
     # login_failure
   end
 
