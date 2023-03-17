@@ -1,16 +1,22 @@
 class Api::VehiclesController < ApplicationController
   def index
     @vehicles = Vehicle.order(created_at: :desc)
-    render json: @vehicles
+    render json: {
+      status: '00',
+      data: @vehicles
+    }
   end
 
   def show
-    @vehicle = Vehicle.where(id: params[:id])
-    render json: @vehicle
+    @vehicle = Vehicle.find(params[:id])
+    render json: {
+      status: '00',
+      data: @vehicle
+    }
   end
 
   def create
-    vehicle = current_user.vehices.new(vehicles_params)
+    vehicle = current_api_user.vehicles.new(vehicles_params)
 
     if vehicle.save
       flash[:notice] = 'vehicle created successfully'

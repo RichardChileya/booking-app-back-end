@@ -69,3 +69,6 @@ node_modules/
 config/database.yml
 
 /config/master.key
+
+# Ignore application configuration
+/config/application.yml

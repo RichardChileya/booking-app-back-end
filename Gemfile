@@ -60,3 +60,5 @@ gem 'devise-jwt'
 gem 'cancancan'
 
 gem 'fast_jsonapi'
+
+gem 'figaro'
