@@ -1,7 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::Users::Registrations', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  path '/api/signup' do
+    post('Sign Up a new User') do
+      tags 'Sign up'
+      description 'Sign up a new user'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :user, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          email: { type: :string },
+          password: { type: :string },
+          password_confirmation: { type: :string }
+        },
+        required: %w[name email password password_confirmation]
+      }
+      let(:user) do
+        {
+          user: {
+            name: 'Jes',
+            email: 'jes@gmail.com',
+            password: 'password',
+            password_confirmation: 'password'
+          }
+        }
+      end
+
+      response(200, 'successful') do
+        examples 'application/json' =>
+          { message: 'Sign up successful' }
+        run_test!
+      end
+    end
   end
 end
