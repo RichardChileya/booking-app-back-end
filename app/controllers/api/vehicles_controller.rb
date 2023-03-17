@@ -49,6 +49,6 @@ class Api::VehiclesController < ApplicationController
   private
 
   def vehicles_params
-    params.require(:vehicles).permit(:name, :image, :model, :description, :daily_price, :availability)
+    params.require(:vehicles).permit(:name, :image, :model, :daily_price, :description, :availability)
   end
 end
