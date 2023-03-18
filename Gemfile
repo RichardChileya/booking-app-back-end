@@ -62,3 +62,5 @@ gem 'cancancan'
 gem 'fast_jsonapi'
 
 gem 'figaro'
+
+gem 'rswag'
