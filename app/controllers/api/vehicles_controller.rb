@@ -19,8 +19,11 @@ class Api::VehiclesController < ApplicationController
     vehicle = current_api_user.vehicles.new(vehicles_params)
 
     if vehicle.save
-      flash[:notice] = 'vehicle created successfully'
-      render json: booking
+      render json: {
+        status: '00',
+        message: 'Vehicle was successfully created',
+        data: VehicleSerializer.new(vehicle).serializable_hash[:data][:attributes]
+      }
     else
       render json: booking.errors, status: :vehicle_not_created
     end
@@ -29,7 +32,6 @@ class Api::VehiclesController < ApplicationController
   def update
     vehicle = Vehicle.find(params[:id])
     if vehicle.update(vehicles_params)
-      flash[:notice] = 'vehicle updated successfully'
       render json: vehicle
     else
       render json: vehicle.errors, status: :vehicle_not_updated
@@ -39,8 +41,10 @@ class Api::VehiclesController < ApplicationController
   def destroy
     vehicle = Vehicle.find(params[:id])
     if vehicle.destroy
-      flash[:notice] = 'vehicle deleted successfully'
-      render json: vehicle
+      render json: {
+        status: '00',
+        message: 'Vehicle was successfully deleted',
+      }
     else
       render json: vehicle.errors, status: :vehicle_not_deleted
     end
