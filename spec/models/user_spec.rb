@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before :each do
-    @user = User.create(name: 'Richard', email: 'rico@gmail.com', password: '1234567', role: 1)
+    @user = User.create(name: 'Grace', email: 'grace@gmail.com', password: 'Password@1', role: 1)
   end
 
   context 'Test validations' do
     it 'checks that the name is present' do
-      @user.name = 'Richard'
+      @user.name = 'Grace'
       expect(@user).to be_valid
     end
 
