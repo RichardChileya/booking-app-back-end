@@ -2,25 +2,26 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [Kanban Board](#kanban_board)
-- [📝 License](#license)
+- [� Table of Contents](#-table-of-contents)
+- [📖 \[booking-app \] ](#-booking-app--)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+    - [Deployment](#deployment)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [Kanban Board ](#kanban-board-)
+  - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -102,9 +103,17 @@ Install this project with:
 
 - You can find the React Frontend client at [React-client](https://github.com/RichardChileya/booking-app-front-end)
 
-- Configure PostgreSQL database in your project in the project directory:
+- Configure Environment file in your project by running the following command:
 
-`config/database.yml`
+`bundle exec figaro install`
+
+- In `config/application.yml`, add the following env keys:
+  `DEVISE_SECRET_KEY:`
+  `DB_USERNAME:`
+  `DB_PASSWORD:`
+
+- Run the command below to generate App Secret for your authentication and add as the DEVISE_SECRET_KEY in your environment:
+  `rake secret`
 
 - Then run the following command to setup the database:
 ```
