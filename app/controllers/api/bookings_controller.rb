@@ -2,7 +2,6 @@ class Api::BookingsController < ApplicationController
   before_action :authenticate_api_user!
 
   def index
-    # @bookings = Booking.all.where(user_id: params[:user_id]).order(created_at: :desc)
     @bookings = current_api_user.bookings.order(created_at: :desc)
     render json: {
       status: '00',
