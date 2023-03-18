@@ -7,7 +7,7 @@ class Api::BookingsController < ApplicationController
     render json: {
       status: '00',
       message: 'Successful',
-      bookings: BookingSerializer.new(@bookings, {include: [:vehicle]})
+      bookings: BookingSerializer.new(@bookings, { include: [:vehicle] })
     }, status: :ok
   end
 

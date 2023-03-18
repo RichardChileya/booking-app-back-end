@@ -43,7 +43,7 @@ class Api::VehiclesController < ApplicationController
     if vehicle.destroy
       render json: {
         status: '00',
-        message: 'Vehicle was successfully deleted',
+        message: 'Vehicle was successfully deleted'
       }
     else
       render json: vehicle.errors, status: :vehicle_not_deleted
