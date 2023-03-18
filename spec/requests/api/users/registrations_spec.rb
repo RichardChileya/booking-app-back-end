@@ -4,7 +4,6 @@ RSpec.describe 'api/users/registrations', type: :request do
   path '/api/signup' do
     post('create registration') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
